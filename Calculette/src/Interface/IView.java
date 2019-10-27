@@ -2,14 +2,30 @@ package Interface;
 
 import java.util.List;
 
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 
 public interface IView {
 	
 	
-	public void affiche();
-	public void change(List<String> data);
-	public void change(String accu);
-	public void handleButtonClicked();
+	
+	
+	/**
+	 * createPrimaryScene la scène finale 
+	 * 
+	 * @return scene
+	 */
+	public Stage createPrimaryScene();
+
+	
+	/**
+	 * create scene intialise une scene avec tous ses composants 
+	 * 
+	 * @return scene
+	 */
+	public Scene createScene();
+	
 
 
 

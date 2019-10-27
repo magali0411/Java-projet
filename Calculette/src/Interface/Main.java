@@ -1,9 +1,8 @@
-package application;
+package Interface;
 	
 
 import com.sun.glass.ui.View;
 
-import Interface.GUI;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;

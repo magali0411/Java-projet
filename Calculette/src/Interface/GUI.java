@@ -42,12 +42,6 @@ public class GUI implements IView {
 	private Stage primaryStage;
 
 	
-	/**
-	 * create scene intialise une scene avec tous ses composants 
-	 * 
-	 * @return scene
-	 */
-	
 	public Scene createScene() {
 		
 		tr = new Titre();
@@ -74,14 +68,7 @@ public class GUI implements IView {
        return scene;
 	
 	}
-	
-	
-	/**
-	 * createPrimaryScene la scène finale 
-	 * 
-	 * @return scene
-	 */
-	
+
 	public Stage createPrimaryScene() {
 		
 		 //definir la scene principale
@@ -107,27 +94,5 @@ public class GUI implements IView {
     	return primaryStage;	
 		
 	}
-
-	@Override
-	public void affiche() {
-		// TODO Auto-generated method stub		
-	}
-
-	@Override
-	public void change(List<String> data) {
-		// TODO Auto-generated method stub		
-	}
-
-	@Override
-	public void change(String accu) {
-		// TODO Auto-generated method stub		
-	}
-
-	@Override
-	public void handleButtonClicked() {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }
