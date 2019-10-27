@@ -1,9 +1,6 @@
 package application;
 	
 
-
-
-
 import com.sun.glass.ui.View;
 
 import Interface.GUI;

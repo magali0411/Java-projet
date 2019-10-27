@@ -14,8 +14,7 @@ public class Affichage {
 	
 	// composants clavier
 	protected Button[][] clavier = new Button[4][5];	
-	protected Texts AffichageText;
-	  
+
 	protected GridPane grille;
 	protected VBox box;
 	
@@ -26,10 +25,10 @@ public class Affichage {
 	protected TextArea taHisto2;
 	
 	public Affichage() {
+		
 		Pile p = new Pile();
 		String ac = "";
 		accumulateur = new Accumulateur(p, ac);
-		
 		grille = new GridPane();
 		box = new VBox();
 		textBox = new VBox();
@@ -38,4 +37,5 @@ public class Affichage {
 		taHisto2 = new TextArea();
 		
 	}
+
 }

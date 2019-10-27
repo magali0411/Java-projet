@@ -35,9 +35,8 @@ import javafx.util.Duration;
 
 public class GUI implements IView {
 
-	private Clavier clv;// grille 
+	private Clavier clv;// vue clavier  
 	private Titre tr; //titre
-	private Texts af; 	// affichage
 	private Group root; // groupe
 	private Scene scene; //scene
 	private Stage primaryStage;
@@ -53,19 +52,19 @@ public class GUI implements IView {
 		
 		tr = new Titre();
 		clv = new Clavier();
-		af = new Texts();
 		
+		//new Affichage();
 				
 		// création des noeuds 
 		Label lbl = tr.createLabel();
 		GridPane grille = clv.createGrid();
 		VBox box = clv.createbox();
-		VBox vb = af.createAffichage();
+		VBox vb = clv.createAffichage();
 
 		root = new Group();
 		
 		scene = new Scene(root, 500, 600, Color.MINTCREAM);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
         // Placement dans la fenêtre parent  
         root.getChildren().add(vb);

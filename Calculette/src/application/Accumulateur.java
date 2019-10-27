@@ -61,7 +61,7 @@ public class Accumulateur implements IAccumulateur {
 	public void add() {
 		// TODO Auto-generated method stub
 		
-		if (!pile.isEmpty()) {
+		if (pile.size() > 1) {
 			double a = pile.pop();
 			double b = pile.pop();
 			pile.push(b+a);
@@ -72,7 +72,7 @@ public class Accumulateur implements IAccumulateur {
 	@Override
 	public void sub() {
 		// TODO Auto-generated method stub
-		if (!pile.isEmpty()) {
+		if (pile.size() > 1) {
 			double a = pile.pop();
 			double b = pile.pop();
 			pile.push(b-a);
@@ -82,7 +82,7 @@ public class Accumulateur implements IAccumulateur {
 	@Override
 	public void mult() {
 		// TODO Auto-generated method stub
-		if (!pile.isEmpty()) {
+		if (pile.size() > 1) {
 			double a = pile.pop();
 			double b = pile.pop();
 			pile.push(b*a);
@@ -93,7 +93,7 @@ public class Accumulateur implements IAccumulateur {
 	@Override
 	public void div() {
 		// TODO Auto-generated method stub
-		if (!pile.isEmpty()) {
+		if (pile.size() > 1) {
 				double a = pile.elementAt(pile.size()-1);
 				if (a!=0) {
 					pile.pop();

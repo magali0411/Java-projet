@@ -32,9 +32,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Box;
 import sun.font.CreatedFontTracker;
 
-public class Clavier extends Affichage implements ActionListener{
-	
-
+public class Clavier extends Affichage{
 	
     String styles =
 //          "-fx-background-color: #0000ff;" +
@@ -52,7 +50,10 @@ public class Clavier extends Affichage implements ActionListener{
     		        "-fx-max-height: 80px; " +
     		        "-fx-background-color: transparent;" ;
     
-
+	
+	private String dialStyle = "-fx-font-family: Arial;" +
+		    "-fx-font-size: 14;" ;
+    
 	/**
 	 * Gridpane génère la grille représentant le clavier de la calculatricce
 	 * @return gridPane
@@ -60,9 +61,6 @@ public class Clavier extends Affichage implements ActionListener{
     
 	
 	public GridPane createGrid() {
-		
-		this.AffichageText = new Texts(accumulateur);
-		
 		
 		//grille = new GridPane();
 	
@@ -113,13 +111,13 @@ public class Clavier extends Affichage implements ActionListener{
 		    	
 		    	// On afficha la pile à chaque fois qu'un bouton est cliqué 
 		    	if (!accumulateur.getPile().isEmpty()) {
-		    		AffichageText.taHisto1.setText(accumulateur.pileToString());
+		    		taHisto1.setText(accumulateur.pileToString());
 		    		System.out.println("Pile :" + accumulateur.pileToString());
 		    	}
 		    	
 		    	// l'entrée clavier aussi
 		    	if (accumulateur.getAcc() != "") {
-		    		AffichageText.taHisto2.setText(accumulateur.getAcc());
+		    		taHisto2.setText(accumulateur.getAcc());
 		    		System.out.println("Accumulateur : " + accumulateur.getAcc());
 		    	}
 		    			    	
@@ -159,20 +157,17 @@ public class Clavier extends Affichage implements ActionListener{
 		Image imageReverse = new Image("Images/reverse.png");
 		Image imageBack = new Image("Images/back.png");
 		
-		box = new VBox();
-		
         // Ligne supplémentaire
 	    box.setPadding(new Insets(20, 300, 350, 380)); 
         box.setAlignment(Pos.TOP_LEFT); 
         box.setSpacing(10);
-        box.setMouseTransparent(true);
+        //box.setMouseTransparent(true);
         
         // bouton remise à 0
         Button buttonRev = new Button();
         buttonRev.setGraphic(new ImageView(imageReverse));
 		buttonRev.setPrefSize(85, 85);
 		buttonRev.setStyle(roundStyle);
-		buttonRev.setTooltip(new Tooltip("Tooltip for Button"));
 		
         // Bouton retour arrière
         Button buttonB = new Button();
@@ -180,46 +175,72 @@ public class Clavier extends Affichage implements ActionListener{
 		buttonB.setPrefSize(85, 85);
 		buttonB.setStyle(roundStyle);
 		
-		
-		// Ajout des tooltips
-		Tooltip tpReset = new Tooltip("Remise à 0 de la calculatrice");
-		
-		Tooltip tpBack = new Tooltip("Supprimer la dernière valeur");
-		buttonB.setTooltip(tpBack);
-		
-		// Mouse listener
-		
-	     DropShadow shadow = new DropShadow(); // ombre 
-	     
-        // Ajout d'une ombre lorsque la souris passe sur le bouton
-		buttonB.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-            	buttonB.setEffect(shadow);
-            	System.out.println("hhh");
-            }
-        });
- 
-        // Suppression de l'ombre
-		buttonB.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-            	buttonB.setEffect(null);
-            }
-        });
-		
+//		
+//		// Ajout des tooltips
+//		Tooltip tpReset = new Tooltip("Remise à 0 de la calculatrice");
+//		
+//		Tooltip tpBack = new Tooltip("Supprimer la dernière valeur");
+//		buttonB.setTooltip(tpBack);
+//		
+//		// Mouse listener
+//		
+//	     DropShadow shadow = new DropShadow(); // ombre 
+//	     
+//        // Ajout d'une ombre lorsque la souris passe sur le bouton
+//		buttonB.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent e) {
+//            	buttonB.setEffect(shadow);
+//            	System.out.println("hhh");
+//            }
+//        });
+// 
+//        // Suppression de l'ombre
+//		buttonB.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent e) {
+//            	buttonB.setEffect(null);
+//            }
+//        });
+//		
 		box.getChildren().addAll(buttonRev, buttonB);
 		
 		return box;
 		
 	}
-
-
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	
+	/**
+	 * createAffichage génère l'affichage pour l'utilisateur de la calculatrice
+	 * @return la box d'affichage
+	 */
+	
+	public VBox createAffichage() {
+				
+		//VBox textBox = new VBox();
+		textBox.setPrefSize(375, 100);
+		textBox.setPadding(new Insets(20,10,10,10));
+		textBox.setSpacing(10);
+		textBox.setAlignment(Pos.CENTER);
+        //box.setStyle("-fx-border-color: grey;");
 		
+		// Textes de dialogue
+		taDial.setEditable(false);
+		taDial.setStyle(dialStyle);
+		taDial.setText("Bienvenue sur la calculatrice - Entrez vos opérations ");
+		
+		taHisto1.setEditable(false);
+		taHisto1.setStyle(dialStyle);
+		
+		taHisto2.setEditable(false);
+		taHisto2.setStyle(dialStyle);
+		
+		textBox.getChildren().add(taDial);
+		textBox.getChildren().add(taHisto1);
+		textBox.getChildren().add(taHisto2);
+		
+		return textBox;
+	
 	}
+	
 
 }
