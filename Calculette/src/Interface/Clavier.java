@@ -155,7 +155,7 @@ public class Clavier extends Affichage{
 		        	case "7" : accumulateur.accumuler("7") ;refresh(); break;
 		        	case "8" : accumulateur.accumuler("8") ;refresh(); break;
 		        	case "9" : accumulateur.accumuler("9"); refresh();break;
-		        	case "," : accumulateur.accumuler(",");refresh(); break;
+		        	case "," : accumulateur.accumuler(".");refresh(); break;
 		        	case "(-)" : accumulateur.neg(); refresh();break ;
 		        	case "logo2" : accumulateur.drop();refresh(); break;
 		        	case "logo1" : accumulateur.reset();refresh(); break;

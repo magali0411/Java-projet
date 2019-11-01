@@ -33,8 +33,7 @@ public class Accumulateur implements IAccumulateur {
 
 	@Override
 	public void push() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 		if (!acc.isEmpty()) {
 			Double a = Double.parseDouble(acc); //on transforme acc en double
 			pile.push(a);
