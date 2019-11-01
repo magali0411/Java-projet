@@ -1,5 +1,8 @@
 package application;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 public class Accumulateur implements IAccumulateur {
 	
 	private Pile pile;
@@ -74,6 +77,8 @@ public class Accumulateur implements IAccumulateur {
 			double a = pile.pop();
 			double b = pile.pop();
 			pile.push(b+a);
+		} else {
+			warn();
 		}
 		
 	}
@@ -85,6 +90,8 @@ public class Accumulateur implements IAccumulateur {
 			double a = pile.pop();
 			double b = pile.pop();
 			pile.push(b-a);
+		} else {
+			warn();
 		}
 	}
 
@@ -95,6 +102,8 @@ public class Accumulateur implements IAccumulateur {
 			double a = pile.pop();
 			double b = pile.pop();
 			pile.push(b*a);
+		} else {
+			warn();
 		}
 		
 	}
@@ -111,6 +120,8 @@ public class Accumulateur implements IAccumulateur {
 				} else {
 					System.out.println("Erreur, division par 0");						
 			}
+		} else {
+			warn();
 		}
 		
 	}
@@ -150,6 +161,14 @@ public class Accumulateur implements IAccumulateur {
 	public void reset() {
 		pile.clear();
 		acc = "";
+	}
+	
+	public void warn() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information");
+		alert.setHeaderText(null);
+		alert.setContentText("Veuillez entrer au moins 2 nombres avant d'effectuer une opération");
+		alert.show();
 	}
 
 }

@@ -65,6 +65,11 @@ public interface IAccumulateur {
 	 */
 	public void reset();
 	
+	/**
+	 * Warn informe l'utilisateur
+	 */
+	public void warn();
+	
 	
 	
 	public String pileToString();
