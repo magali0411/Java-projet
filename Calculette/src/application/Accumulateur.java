@@ -13,7 +13,10 @@ public class Accumulateur implements IAccumulateur {
 
 
 	public String getAcc() {
-		return acc;
+		if (!acc.isEmpty())
+			return acc;
+		else 
+			return "";
 	}
 
 	
@@ -44,8 +47,15 @@ public class Accumulateur implements IAccumulateur {
 
 	@Override
 	public void drop() {
-		// TODO Auto-generated method stub
-		pile.removeElementAt(pile.size()-1); //on supprime le dernier élément
+		if (!acc.isEmpty()) {
+			String str = acc;
+			acc = str.substring(0, str.length() - 1); // on supprime le dernier élément de l'accumulateur
+		} else if (!pile.isEmpty()) {			
+			pile.remove(pile.size()-1); //on supprime le dernier élément de la pile				
+		} else {
+			System.out.println("Nothing to drop");
+		}
+			
 	}
 
 	@Override
@@ -133,9 +143,14 @@ public class Accumulateur implements IAccumulateur {
 	}
 
 	@Override
-	public void reset() {
+	public void resetAcc() {
 		// TODO Auto-generated method stub
 		acc = ""; //réinitialise seulement ce qu'on est en train de taper, pas la pile entière
+	}
+	
+	public void reset() {
+		pile.clear();
+		acc = "";
 	}
 
 }

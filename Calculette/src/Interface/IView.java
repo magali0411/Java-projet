@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 public interface IView {
 	
 	
-	
-	
 	/**
 	 * createPrimaryScene la scène finale 
 	 * 

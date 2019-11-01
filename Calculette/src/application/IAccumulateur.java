@@ -19,7 +19,7 @@ public interface IAccumulateur {
 	 */
 	public void push();
 	/**
-	 * drop supprime le dernier élément de la pile
+	 * drop supprime le dernier élément
 	 */
 	public void drop();
 	/**
@@ -56,9 +56,16 @@ public interface IAccumulateur {
 	 */
 	public void accumuler(String caractere);
 	/**
-	 * reset efface la dernière entrée de l'utilisateur 
+	 * resetAcc efface la dernière entrée de l'utilisateur 
+	 */
+	public void resetAcc();
+	
+	/**
+	 * reset toute la calculatrice
 	 */
 	public void reset();
+	
+	
 	
 	public String pileToString();
 

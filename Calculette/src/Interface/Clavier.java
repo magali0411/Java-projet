@@ -9,6 +9,7 @@ import javax.swing.event.MenuDragMouseEvent;
 import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
 
 import com.sun.accessibility.internal.resources.accessibility;
+import com.sun.tools.javac.code.TypeTag.NumericClasses;
 
 import application.Accumulateur;
 import application.IAccumulateur;
@@ -46,8 +47,9 @@ public class Clavier extends Affichage{
     		        "-fx-min-width: 80px; " +
     		        "-fx-min-height: 80px; " +
     		        "-fx-max-width: 80px; " +
-    		        "-fx-max-height: 80px; " +
-    		        "-fx-background-color: transparent;" ;
+    		        "-fx-max-height: 80px; " ;
+    		        //"-fx-background-color: transparent;" 
+    		        
     
 	
 	private String dialStyle = "-fx-font-family: Arial;" +
@@ -72,10 +74,10 @@ public class Clavier extends Affichage{
    
     	String numeros[][] = {
 	    		
-    			{ "7" , "8", "9", "%" , "PUSH" },
-    			{ "4" , "5", "6", "X", " r " },
-    			{ "1" , "2", "3", "-", " " },
-    			{ "0" , ",", "(-)", "+", " " }
+    			{ "7" , "8", "9", "%" , " " },
+    			{ "4" , "5", "6", "X", "logo1" },
+    			{ "1" , "2", "3", "-", "logo2" },
+    			{ "0" , ",", "(-)", "+", "logo3" }
     	};
 	    
 	    for(int i = 0; i < 4; i++){
@@ -96,55 +98,111 @@ public class Clavier extends Affichage{
 	 * @return Button
 	 */	
 	private Button createButton(String num){
-
+		
+		// Images spécifiques 
+		Image imageReverse = new Image("Images/reverse.png");
+		Image imageBack = new Image("Images/back.png");
+		Image imagePush = new Image("Images/entrer.png");
+		
 		// Déclaration du bouton
 		Button button = new Button();
-		button.setText(num);
-		button.setStyle(styles);
 		button.setPrefSize(85, 85);
+		
+		if (num == "logo1") {
+	        button.setGraphic(new ImageView(imageReverse));
+			button.setStyle(roundStyle);
+			button.setTooltip(new Tooltip("Remise à 0 de la calculatrice"));
+		} else if (num == "logo2") {
+	        button.setGraphic(new ImageView(imageBack));
+			button.setStyle(roundStyle);
+			button.setTooltip(new Tooltip("Supprimer la dernier valeur"));
+			
+		} else if (num == "logo3"){			
+			button.setGraphic(new ImageView(imagePush));
+			button.setStyle(roundStyle);
+			button.setTooltip(new Tooltip("Valider"));		
+		} else if (num ==" ") {
+			button.setStyle("-fx-background-color: transparent;");
+			button.setText("");
+			
+		} else {
+			button.setStyle(styles);
+			button.setText(num);
+		}
+		
+		button.setId(num); // id pour identifier les bouttons 
+		
 		
 		// Listener click souris
 		button.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			
 		    public void handle(MouseEvent me){
 		    	
-		    	// On afficha la pile à chaque fois qu'un bouton est cliqué 
-		    	if (!accumulateur.getPile().isEmpty()) {
-		    		taHisto1.setText(accumulateur.pileToString());
-		    		System.out.println("Pile :" + accumulateur.pileToString());
-		    	}
-		    	
-		    	// l'entrée clavier aussi
-		    	if (accumulateur.getAcc() != "") {
-		    		taHisto2.setText(accumulateur.getAcc());
-		    		System.out.println("Accumulateur : " + accumulateur.getAcc());
-		    	}
+		    	//refresh();
 		    			    	
-		        switch(button.getText()){
-		        	case "+" : accumulateur.add(); break;
-		        	case "-": accumulateur.sub(); break;
-		        	case "%" : accumulateur.div(); break;
-		        	case "X" : accumulateur.mult();break;
-		        	case "0" : accumulateur.accumuler("0");break;
-		        	case "1" : accumulateur.accumuler("1") ; break;
-		        	case "2" : accumulateur.accumuler("2") ; break;
-		        	case "3" : accumulateur.accumuler("3") ; break;
-		        	case "4" : accumulateur.accumuler("4") ; break;
-		        	case "5" : accumulateur.accumuler("5") ; break;
-		        	case "6" : accumulateur.accumuler("6") ; break;
-		        	case "7" : accumulateur.accumuler("7") ; break;
-		        	case "8" : accumulateur.accumuler("8") ; break;
-		        	case "9" : accumulateur.accumuler("9"); break;
-		        	case "PUSH" : accumulateur.push(); break;
-		        	case "," : accumulateur.accumuler(","); break;
-		        	case "(-)" : accumulateur.neg(); break ;
-		        	default : break;
+		        switch(button.getId()){
+		        	case "+" : accumulateur.add();refresh(); break;
+		        	case "-": accumulateur.sub();refresh(); break;
+		        	case "%" : accumulateur.div();refresh(); break;
+		        	case "X" : accumulateur.mult();refresh();break;
+		        	case "0" : accumulateur.accumuler("0");refresh();break;
+		        	case "1" : accumulateur.accumuler("1") ;refresh(); break;
+		        	case "2" : accumulateur.accumuler("2") ;refresh(); break;
+		        	case "3" : accumulateur.accumuler("3") ;refresh(); break;
+		        	case "4" : accumulateur.accumuler("4") ;refresh(); break;
+		        	case "5" : accumulateur.accumuler("5") ;refresh(); break;
+		        	case "6" : accumulateur.accumuler("6") ;refresh(); break;
+		        	case "7" : accumulateur.accumuler("7") ;refresh(); break;
+		        	case "8" : accumulateur.accumuler("8") ;refresh(); break;
+		        	case "9" : accumulateur.accumuler("9"); refresh();break;
+		        	case "," : accumulateur.accumuler(",");refresh(); break;
+		        	case "(-)" : accumulateur.neg(); refresh();break ;
+		        	case "logo2" : accumulateur.drop();refresh(); break;
+		        	case "logo1" : accumulateur.reset();refresh(); break;
+		        	case "logo3" : accumulateur.push();refresh(); break;
+		        	default :refresh(); break;
 		        }
 		    }
 		});
 		
 		return button;
 	}
+
+	
+	/**
+	 * createAffichage génère l'affichage pour l'utilisateur de la calculatrice
+	 * @return la box d'affichage
+	 */
+	
+	public VBox createAffichage() {
+				
+		//VBox textBox = new VBox();
+		textBox.setPrefSize(475, 100);
+		textBox.setPadding(new Insets(20,10,10,10));
+		textBox.setSpacing(10);
+		textBox.setAlignment(Pos.CENTER);
+        //box.setStyle("-fx-border-color: grey;");
+		
+		// Textes de dialogue
+		taDial.setEditable(false);
+		taDial.setStyle(dialStyle);
+		taDial.setText("Bienvenue sur la calculatrice - Entrez vos opérations ");
+		
+		//taHisto1.setEditable(false);
+		taHisto1.setStyle(dialStyle);
+		
+		taHisto2.setEditable(false);
+		taHisto2.setStyle(dialStyle);
+		
+		textBox.getChildren().add(taDial);
+		textBox.getChildren().add(taHisto1);
+		textBox.getChildren().add(taHisto2);
+		
+		return textBox;
+	
+	}
+
+	
 	/**
 	 * createBox crée la dernière ligne du clavier comportant des fonctionnalités supplémentaires
 	 * 
@@ -206,39 +264,6 @@ public class Clavier extends Affichage{
 		
 		return box;
 		
-	}
-	
-	/**
-	 * createAffichage génère l'affichage pour l'utilisateur de la calculatrice
-	 * @return la box d'affichage
-	 */
-	
-	public VBox createAffichage() {
-				
-		//VBox textBox = new VBox();
-		textBox.setPrefSize(375, 100);
-		textBox.setPadding(new Insets(20,10,10,10));
-		textBox.setSpacing(10);
-		textBox.setAlignment(Pos.CENTER);
-        //box.setStyle("-fx-border-color: grey;");
-		
-		// Textes de dialogue
-		taDial.setEditable(false);
-		taDial.setStyle(dialStyle);
-		taDial.setText("Bienvenue sur la calculatrice - Entrez vos opérations ");
-		
-		taHisto1.setEditable(false);
-		taHisto1.setStyle(dialStyle);
-		
-		taHisto2.setEditable(false);
-		taHisto2.setStyle(dialStyle);
-		
-		textBox.getChildren().add(taDial);
-		textBox.getChildren().add(taHisto1);
-		textBox.getChildren().add(taHisto2);
-		
-		return textBox;
-	
 	}
 	
 

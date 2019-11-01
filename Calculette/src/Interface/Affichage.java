@@ -37,5 +37,21 @@ public class Affichage {
 		taHisto2 = new TextArea();
 		
 	}
+	
+	
+	/**
+	 * Refresh actualise l'affichage des textes 
+	 */
+	
+	public void refresh() {
+		
+		taHisto1.setText("Résultat - " + accumulateur.pileToString());
+		taHisto2.setText(accumulateur.getAcc());
+		
+		// retour console pour l'admin 
+		System.out.println("Pile :" + accumulateur.pileToString());
+		System.out.println("Accumulateur : " + accumulateur.getAcc());
+		
+	}
 
 }

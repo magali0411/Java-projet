@@ -63,7 +63,7 @@ public class GUI implements IView {
         // Placement dans la fenêtre parent  
         root.getChildren().add(vb);
         root.getChildren().add(grille);
-        root.getChildren().add(box);
+        //root.getChildren().add(box);
         
        return scene;
 	
