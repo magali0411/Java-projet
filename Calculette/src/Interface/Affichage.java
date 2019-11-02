@@ -49,8 +49,8 @@ public class Affichage {
 		taHisto2.setText(accumulateur.getAcc());
 		
 		// retour console pour l'admin 
-		System.out.println("Pile :" + accumulateur.pileToString());
-		System.out.println("Accumulateur : " + accumulateur.getAcc());
+		//System.out.println("Pile :" + accumulateur.pileToString());
+		//System.out.println("Accumulateur : " + accumulateur.getAcc());
 		
 	}
 

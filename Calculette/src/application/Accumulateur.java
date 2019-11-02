@@ -1,9 +1,14 @@
 package application;
+import java.util.logging.Logger;
 
 import javafx.scene.control.Alert;
+
+
 import javafx.scene.control.Alert.AlertType;
 
 public class Accumulateur implements IAccumulateur {
+	
+	private static final Logger LOGGER = Logger.getLogger(Accumulateur.class.getName());
 	
 	private Pile pile;
 	private String acc;
@@ -42,7 +47,7 @@ public class Accumulateur implements IAccumulateur {
 			pile.push(a);
 			acc="";
 		} else {
-			System.out.println("nothing to push");
+			LOGGER.info("nothing to push");
 		}
 		
 	}
@@ -55,7 +60,7 @@ public class Accumulateur implements IAccumulateur {
 		} else if (!pile.isEmpty()) {			
 			pile.remove(pile.size()-1); //on supprime le dernier élément de la pile				
 		} else {
-			System.out.println("Nothing to drop");
+			LOGGER.info("Nothing to drop");
 		}
 			
 	}
@@ -78,7 +83,7 @@ public class Accumulateur implements IAccumulateur {
 			double b = pile.pop();
 			pile.push(b+a);
 		} else {
-			warn();
+			warn("Veuillez entrer au moins 2 nombres avant d'effectuer une opération");
 		}
 		
 	}
@@ -91,7 +96,7 @@ public class Accumulateur implements IAccumulateur {
 			double b = pile.pop();
 			pile.push(b-a);
 		} else {
-			warn();
+			warn("Veuillez entrer au moins 2 nombres avant d'effectuer une opération");
 		}
 	}
 
@@ -103,7 +108,7 @@ public class Accumulateur implements IAccumulateur {
 			double b = pile.pop();
 			pile.push(b*a);
 		} else {
-			warn();
+			warn("Veuillez entrer au moins 2 nombres avant d'effectuer une opération");
 		}
 		
 	}
@@ -118,19 +123,23 @@ public class Accumulateur implements IAccumulateur {
 					double b = pile.pop();
 					pile.push(b/a); 
 				} else {
-					System.out.println("Erreur, division par 0");						
+					warn("Division par 0 impossible");
+					LOGGER.info("Erreur, division par 0");						
 			}
 		} else {
-			warn();
+			warn("Veuillez entrer au moins 2 nombres avant d'effectuer une opération");
 		}
 		
 	}
 
 	@Override
 	public void neg() {
-		// TODO Auto-generated method stub
-		String moins = "-";
-		acc = moins + acc; //concat classique
+		if(acc.charAt(0) != '-') {
+			String moins = "-";
+			acc = moins + acc; //concat classique
+		}else {
+			acc = acc.substring(1); // possibilité de supprimer la negation
+		}
 		
 	}
 
@@ -163,11 +172,11 @@ public class Accumulateur implements IAccumulateur {
 		acc = "";
 	}
 	
-	public void warn() {
+	public void warn(String str) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Information");
 		alert.setHeaderText(null);
-		alert.setContentText("Veuillez entrer au moins 2 nombres avant d'effectuer une opération");
+		alert.setContentText(str);
 		alert.show();
 	}
 

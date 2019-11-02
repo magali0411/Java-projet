@@ -67,8 +67,9 @@ public interface IAccumulateur {
 	
 	/**
 	 * Warn informe l'utilisateur
+	 * @param message à affichier 
 	 */
-	public void warn();
+	public void warn(String str);
 	
 	
 	
