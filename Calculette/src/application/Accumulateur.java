@@ -43,9 +43,14 @@ public class Accumulateur implements IAccumulateur {
 	public void push() {
 		// TODO Auto-generated method stub	
 		if (!acc.isEmpty()) {
-			Double a = Double.parseDouble(acc); //on transforme acc en double
-			pile.push(a);
-			acc="";
+			try {
+				Double a = Double.parseDouble(acc); //on transforme acc en double
+				pile.push(a);
+				acc="";
+			} catch(Exception e){
+				LOGGER.info("Nombre invalide \"" + acc.toString() +"\"");
+				warn("Veuillez entrer un nombre valide");
+			}
 		} else {
 			LOGGER.info("nothing to push");
 		}
