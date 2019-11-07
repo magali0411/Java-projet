@@ -10,15 +10,13 @@ public class Accumulateur implements IAccumulateur {
 	
 	private static final Logger LOGGER = Logger.getLogger(Accumulateur.class.getName());
 	
-	private Pile pile;
-	private String acc;
+	private Pile pile; // Pile contenant les nombres accumulés
+	private String acc; // Accumulateur contenant les chiffres entrés au fur et à mesure
 	
 	// getters and setters
 	public Pile getPile() {
 		return pile;
 	}
-
-
 
 	public String getAcc() {
 		if (!acc.isEmpty())

@@ -36,21 +36,18 @@ import javafx.util.Duration;
 public class GUI implements IView {
 
 	private Clavier clv;// vue clavier  
-	private Titre tr; //titre
 	private Group root; // groupe
 	private Scene scene; //scene
 	private Stage primaryStage;
 
 	
 	public Scene createScene() {
-		
-		tr = new Titre();
+
 		clv = new Clavier();
 		
 		//new Affichage();
 				
 		// création des noeuds 
-		Label lbl = tr.createLabel();
 		GridPane grille = clv.createGrid();
 		VBox box = clv.createbox();
 		VBox vb = clv.createAffichage();

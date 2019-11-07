@@ -1,6 +1,8 @@
 package Interface;
 
 
+import java.awt.Font;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,6 +22,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
@@ -34,9 +37,8 @@ import sun.font.CreatedFontTracker;
 
 public class Clavier extends Affichage{
 	
+	// Définition des styles des boutons
     String styles =
-//          "-fx-background-color: #0000ff;" +
-//          "-fx-border-color: #ff0000;" +
         "-fx-background-radius: 1em; " +
   		"-fx-font-weight: bold;" +
   		"-fx-font-size: 2.5em;"+
@@ -51,7 +53,7 @@ public class Clavier extends Affichage{
     		        //"-fx-background-color: transparent;" 
     		        
     
-	
+	// Définition du style des boites de dialogue
 	private String dialStyle = "-fx-font-family: Arial;" +
 		    "-fx-font-size: 14;" ;
     
@@ -60,7 +62,6 @@ public class Clavier extends Affichage{
 	 * @return gridPane
 	 */
     
-	
 	public GridPane createGrid() {
 		
 		//grille = new GridPane();
@@ -133,13 +134,11 @@ public class Clavier extends Affichage{
 		button.setId(num); // id pour identifier les bouttons 
 		
 		
-		// Listener click souris
+		// Ecouteur sur les click souris
 		button.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			
 		    public void handle(MouseEvent me){
 		    	
-		    	//refresh();
-		    			    	
 		        switch(button.getId()){
 		        	case "+" : accumulateur.add();refresh(); break;
 		        	case "-": accumulateur.sub();refresh(); break;
@@ -176,22 +175,22 @@ public class Clavier extends Affichage{
 	
 	public VBox createAffichage() {
 				
-		//VBox textBox = new VBox();
+		// Conteneur des dialogues
 		textBox.setPrefSize(475, 100);
 		textBox.setPadding(new Insets(20,10,10,10));
 		textBox.setSpacing(10);
 		textBox.setAlignment(Pos.CENTER);
-        //box.setStyle("-fx-border-color: grey;");
 		
-		// Textes de dialogue
+		
+		// Création des fenêtres de dialogue
 		taDial.setEditable(false);
 		taDial.setStyle(dialStyle);
 		taDial.setText("Bienvenue sur la calculatrice - Entrez vos opérations ");
 		
 		//taHisto1.setEditable(false);
-		taHisto1.setStyle(dialStyle);
+		taHisto1.setStyle(dialStyle);	
 		
-		taHisto2.setEditable(false);
+		//taHisto2.setEditable(false);
 		taHisto2.setStyle(dialStyle);
 		
 		textBox.getChildren().add(taDial);
@@ -218,7 +217,6 @@ public class Clavier extends Affichage{
 	    box.setPadding(new Insets(20, 300, 350, 380)); 
         box.setAlignment(Pos.TOP_LEFT); 
         box.setSpacing(10);
-        //box.setMouseTransparent(true);
         
         // bouton remise à 0
         Button buttonRev = new Button();
@@ -231,35 +229,8 @@ public class Clavier extends Affichage{
         buttonB.setGraphic(new ImageView(imageBack));
 		buttonB.setPrefSize(85, 85);
 		buttonB.setStyle(roundStyle);
-		
-//		
-//		// Ajout des tooltips
-//		Tooltip tpReset = new Tooltip("Remise à 0 de la calculatrice");
-//		
-//		Tooltip tpBack = new Tooltip("Supprimer la dernière valeur");
-//		buttonB.setTooltip(tpBack);
-//		
-//		// Mouse listener
-//		
-//	     DropShadow shadow = new DropShadow(); // ombre 
-//	     
-//        // Ajout d'une ombre lorsque la souris passe sur le bouton
-//		buttonB.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent e) {
-//            	buttonB.setEffect(shadow);
-//            	System.out.println("hhh");
-//            }
-//        });
-// 
-//        // Suppression de l'ombre
-//		buttonB.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent e) {
-//            	buttonB.setEffect(null);
-//            }
-//        });
-//		
+
+		// Ajout des boutons au conteneur box
 		box.getChildren().addAll(buttonRev, buttonB);
 		
 		return box;

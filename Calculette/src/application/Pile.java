@@ -10,9 +10,10 @@ public class Pile extends Stack<Double> {
 	private static int max =30;	
 	private Stack<Double> pileNombre;
 	
-	/*
-	 * display affiche l'intégralité de la pile
-	 */
+/**
+ * displayPile affiche le contenu de la pile
+ * @return Texte string
+ */
 		
 	public String displayPile() {
 		return pileNombre.toString();

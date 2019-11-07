@@ -24,6 +24,7 @@ public class Affichage {
 	protected TextArea taHisto1;
 	protected TextArea taHisto2;
 	
+	// Constructeur de l'affichage
 	public Affichage() {
 		
 		Pile p = new Pile();
@@ -51,7 +52,6 @@ public class Affichage {
 		// retour console pour l'admin 
 		//System.out.println("Pile :" + accumulateur.pileToString());
 		//System.out.println("Accumulateur : " + accumulateur.getAcc());
-		
 	}
 
 }

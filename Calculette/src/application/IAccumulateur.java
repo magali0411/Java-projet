@@ -72,7 +72,10 @@ public interface IAccumulateur {
 	public void warn(String str);
 	
 	
-	
+	/**
+	 * pileToString affiche le contenant de la pile
+	 * @return chaîne de caractères 
+	 */
 	public String pileToString();
 
 }
