@@ -137,7 +137,9 @@ public class Accumulateur implements IAccumulateur {
 
 	@Override
 	public void neg() {
-		if(acc.charAt(0) != '-') {
+		if(acc.isEmpty()) {
+			acc = "-";
+		} else if(acc.charAt(0) != '-') {
 			String moins = "-";
 			acc = moins + acc; //concat classique
 		}else {
