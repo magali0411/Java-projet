@@ -1,44 +1,22 @@
 package Interface;
 
-import java.util.List;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-import com.sun.tools.javac.util.Position;
-
-import javafx.animation.TranslateTransition;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.effect.Bloom;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
 
 public class GUI implements IView {
 
 	private Clavier clv;// vue clavier  
 	private Group root; // groupe
 	private Scene scene; //scene
-	private Stage primaryStage;
 
 	
 	public Scene createScene() {
@@ -49,7 +27,6 @@ public class GUI implements IView {
 				
 		// création des noeuds 
 		GridPane grille = clv.createGrid();
-		VBox box = clv.createbox();
 		VBox vb = clv.createAffichage();
 
 		root = new Group();

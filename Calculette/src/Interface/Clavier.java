@@ -1,39 +1,18 @@
 package Interface;
 
 
-import java.awt.Font;
-import java.awt.Label;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JPanel;
-import javax.swing.event.MenuDragMouseEvent;
-import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
-
-import com.sun.accessibility.internal.resources.accessibility;
-import com.sun.tools.javac.code.TypeTag.NumericClasses;
-
-import application.Accumulateur;
-import application.IAccumulateur;
-import application.Pile;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TextArea;
+
 import javafx.scene.control.Tooltip;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Box;
-import sun.font.CreatedFontTracker;
+
 
 public class Clavier extends Affichage{
 	
