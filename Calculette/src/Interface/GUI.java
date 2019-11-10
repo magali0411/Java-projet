@@ -1,6 +1,7 @@
 package Interface;
+import java.util.logging.Logger;
 
-
+import application.Accumulateur;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -17,6 +18,7 @@ public class GUI implements IView {
 	private Clavier clv;// vue clavier  
 	private Group root; // groupe
 	private Scene scene; //scene
+	private static final Logger LOGGER = Logger.getLogger(Accumulateur.class.getName());
 
 	
 	public Scene createScene() {
@@ -61,7 +63,7 @@ public class GUI implements IView {
         	a.setAlertType(AlertType.WARNING); 
         	a.setContentText("Vous quittez la calculatrice.");
             a.show(); 
-            System.out.println("Application stopped.");
+            LOGGER.info("Application stopped.");
             
         });
     	

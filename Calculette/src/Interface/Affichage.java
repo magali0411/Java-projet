@@ -49,7 +49,7 @@ public class Affichage {
 		taHisto1.setText("Résultat - " + accumulateur.pileToString());
 		taHisto2.setText(accumulateur.getAcc());
 		
-		// retour console pour l'admin 
+		// retour console
 		//System.out.println("Pile :" + accumulateur.pileToString());
 		//System.out.println("Accumulateur : " + accumulateur.getAcc());
 	}
