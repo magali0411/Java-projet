@@ -43,7 +43,7 @@ public interface IAccumulateur {
 	 */
 	public void div();
 	/**
-	 * neg ajoute une chiffre négatif à la pile
+	 * neg ajoute un chiffre négatif à la pile
 	 */
 	public void neg();
 	/**
@@ -67,13 +67,13 @@ public interface IAccumulateur {
 	
 	/**
 	 * Warn informe l'utilisateur
-	 * @param message à affichier 
+	 * @param message à afficher 
 	 */
 	public void warn(String str);
 	
 	
 	/**
-	 * pileToString affiche le contenant de la pile
+	 * pileToString affiche le contenu de la pile
 	 * @return chaîne de caractères 
 	 */
 	public String pileToString();

@@ -70,7 +70,6 @@ public class Accumulateur implements IAccumulateur {
 
 	@Override
 	public void swap() {
-		// TODO Auto-generated method stub
 		double a = pile.pop();
 		double b = pile.pop();
 		pile.push(b);
@@ -79,7 +78,6 @@ public class Accumulateur implements IAccumulateur {
 
 	@Override
 	public void add() {
-		// TODO Auto-generated method stub
 		
 		if (pile.size() > 1) {
 			double a = pile.pop();
@@ -93,7 +91,6 @@ public class Accumulateur implements IAccumulateur {
 
 	@Override
 	public void sub() {
-		// TODO Auto-generated method stub
 		if (pile.size() > 1) {
 			double a = pile.pop();
 			double b = pile.pop();
@@ -105,7 +102,6 @@ public class Accumulateur implements IAccumulateur {
 
 	@Override
 	public void mult() {
-		// TODO Auto-generated method stub
 		if (pile.size() > 1) {
 			double a = pile.pop();
 			double b = pile.pop();
@@ -118,7 +114,6 @@ public class Accumulateur implements IAccumulateur {
 
 	@Override
 	public void div() {
-		// TODO Auto-generated method stub
 		if (pile.size() > 1) {
 				double a = pile.elementAt(pile.size()-1);
 				if (a!=0) {
@@ -138,7 +133,7 @@ public class Accumulateur implements IAccumulateur {
 	@Override
 	public void neg() {
 		if(acc.isEmpty()) {
-			acc = "-";
+			acc = "-"; 
 		} else if(acc.charAt(0) != '-') {
 			String moins = "-";
 			acc = moins + acc; //concat classique
@@ -150,14 +145,12 @@ public class Accumulateur implements IAccumulateur {
 
 	@Override
 	public void backspace() {
-		// TODO Auto-generated method stub
 		acc = acc.substring(0, acc.length()-1); //on transforme acc en acc avec le dernier terme en moins
 	}
 
 	@Override
 	public void accumuler(String caractere) {
-		// TODO Auto-generated method stub
-		acc = acc + caractere; //verifier si la concat d'un String et d'un char est possible
+		acc = acc + caractere; 
 		
 	
 	}
@@ -178,11 +171,11 @@ public class Accumulateur implements IAccumulateur {
 	}
 	
 	public void warn(String str) {
-		Alert alert = new Alert(AlertType.INFORMATION);
+		Alert alert = new Alert(AlertType.INFORMATION); // création d'une alerte
 		alert.setTitle("Information");
 		alert.setHeaderText(null);
 		alert.setContentText(str);
-		alert.show();
+		alert.show(); // affichage à l'écran 
 	}
 
 }
