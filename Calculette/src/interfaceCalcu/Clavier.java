@@ -1,4 +1,4 @@
-package Interface;
+package interfaceCalcu;
 
 
 import javafx.event.EventHandler;
@@ -42,8 +42,6 @@ public class Clavier extends Affichage{
 	 */
     
 	public GridPane createGrid() {
-		
-		//grille = new GridPane();
 	
         // Le corps de la calculatrice
 	    grille.setPadding(new Insets(175, 10, 10, 10)); 

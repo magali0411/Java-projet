@@ -1,4 +1,4 @@
-package Interface;
+package interfaceCalcu;
 
 import application.Accumulateur;
 import application.IAccumulateur;

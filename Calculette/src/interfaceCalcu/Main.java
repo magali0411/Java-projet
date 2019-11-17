@@ -1,4 +1,4 @@
-package Interface;
+package interfaceCalcu;
 	
 import javafx.application.Application;
 import javafx.scene.Scene;
